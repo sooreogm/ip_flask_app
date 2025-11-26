@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -9,7 +9,8 @@ def get_ip_json():
     if ip and "," in ip:
         ip = ip.split(",")[0].strip()
 
-    return jsonify({"ip": ip})
+    # return jsonify({"ip": ip})
+    return render_template("ip.html", user_ip=ip)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)
